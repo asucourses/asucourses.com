@@ -12,7 +12,7 @@ Development:
 1. pip install -r requirements.txt
 1. Copy asucourses/development_settings.py.example to asucourses/development_settings.py
   * Make any changes necessary
-1. python manage.py createsuperuser
+1. python manage.py syncdb
 1. python manage.py migrate
-
-... fin?
+1. take a nice nap...
+1. python manage.py runserver
