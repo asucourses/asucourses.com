@@ -52,3 +52,12 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+# Unique Settings
+development_settings.py
+
+# Databases
+*.sqlite3
+
+# Fuse files
+.fuse*
+

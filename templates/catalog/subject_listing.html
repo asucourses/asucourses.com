@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table-striped">
+        <thead>
+          <tr>
+            <td>Abbreviation</td>
+            <td>Title</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for subject in subjects %}
+            <tr>
+              <td>{{ subject.abbreviation }}</td>
+              <td>{{ subject.name }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div> 
+  </div>
+{% endblock %}
