@@ -54,8 +54,6 @@ def search_results(request):
                 kwargs['course__title'] = form.cleaned_data['class_title']
                      
     all_sections = Section.objects.filter(**kwargs).prefetch_related('course__subject').prefetch_related('sectionmeeting_set__days_of_week')
-    #course_number
-    #class_title 
     #number_of_units
     #meeting_days
     #start_time
