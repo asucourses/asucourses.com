@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table-striped">
+        <thead>
+          <tr>
+            <td>ASU ID</td>
+            <td>Subject</td>
+            <td>Course</td>
+            <td>Title</td>
+            <td>Credits</td>
+            <td>Start Time</td>
+            <td>End Time</td>
+            <td>Days of Week</td>
+            <td>Location</td>
+            <td>Instructors</td>
+            <!--
+            <td>Start Date</td>
+            <td>End Date</td>
+            -->
+            <td>Seats Available</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for section in sections %}
+            <tr>
+              <td>{{ section.number }}
+              <td>{{ section.course }}</td>
+              <Td>{{ section.course.subject }}</td>
+              <td>{{ section.course.title }}</td>
+              <td>
+                {% if section.min_units == section.max_units %}
+                  {{ section.min_units|floatformat }}
+                {% else %}
+                  {{ section.min_units|floatformat }} - {{ section.max_units|floatformat }}
+                {% endif %}
+              </td>
+              
+              {% if section.sectionmeeting_set.all|length == 0 %}
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              {% elif section.sectionmeeting_set.all|length == 1 %}
+                {% for meeting in section.sectionmeeting_set.all %}
+                  <td>{{ meeting.start_time }}</td>
+                  <td>{{ meeting.end_time }}</td>
+                  <td>  
+                    {{ meeting.days_of_week.all|join:", " }}
+                  </td>
+                  <td>{{ meeting.location }}</td>
+                {% endfor %}
+              {% else %}
+                {% with meetings=section.sectionmeeting_set.all %}
+                  <td>
+                    {% for meeting in section.sectionmeeting_set.all %}
+                      {{ meeting.start_time }} <br />
+                    {% endfor %}
+                  </td>
+                  <td>
+                    {% for meeting in section.sectionmeeting_set.all %}
+                      {{ meeting.end_time }} <br />
+                    {% endfor %}
+                  </td>
+                  <td>
+                    {% for meeting in section.sectionmeeting_set.all %}
+                      {{ meeting.days_of_week.all|join:", " }} <br />
+                    {% endfor %}
+                  </td>
+                  <td>
+                    {% for meeting in section.sectionmeeting_set.all %}
+                      {{ meeting.location }} <br />
+                    {% endfor %}
+                  </td>
+                {% endwith %}
+              {% endif %}
+              <td>
+                  {{ section.instructor_set|join:", " }} <br />
+              </td>
+              <!--
+              <td>{{ section.start_date|date:"m/d/Y" }}</td>
+              <td>{{ section.end_date|date:"m/d/Y" }}</td>
+              -->
+              <td>{{ section.seats_available }} of {{ section.seats_total }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div> 
+  </div>
+{% endblock %}

@@ -51,27 +51,27 @@ class DayOfWeek(models.Model):
 #		return self.get_day_display()
 
 class GeneralStudies(models.Model):
-	LITERACY = 'L' # Literacy and Critical Inquiry
-	MATHEMATICS = 'MA' # Mathematical Studies
-	COMPUTER_SCIENCE = 'CS' # Computer/statistics/quantitative applications
-	HUMANITIES = 'HU' # Humanities, Arts and Design
-	SOCIAL_BEHAVIORAL = 'SB' # Social-Behavioral Sciences
-	SCIENCE_QUALITATIVE = 'SQ' # Natural Science - Quantitative
-	SCIENCE_GENERAL = 'SG' #  Natural Science - General 
-	CULTURAL_DIVERSITY = 'C' # Cultural Diversity in the United States
-	GLOBAL_AWARENESS = 'G' # Global Awareness
-	HISTORICAL_AWARENESS = 'H' # Historical Awareness
+	LITERACY             = 'L'  # Literacy and Critical Inquiry
+	MATHEMATICS          = 'MA' # Mathematical Studies
+	COMPUTER_SCIENCE     = 'CS' # Computer/statistics/quantitative applications
+	HUMANITIES           = 'HU' # Humanities, Arts and Design
+	SOCIAL_BEHAVIORAL    = 'SB' # Social-Behavioral Sciences
+	SCIENCE_QUALITATIVE  = 'SQ' # Natural Science - Quantitative
+	SCIENCE_GENERAL      = 'SG' # Natural Science - General 
+	CULTURAL_DIVERSITY   = 'C'  # Cultural Diversity in the United States
+	GLOBAL_AWARENESS     = 'G'  # Global Awareness
+	HISTORICAL_AWARENESS = 'H'  # Historical Awareness
 
 	GENERAL_STUDIES = (
-		(LITERACY, 'Literacy and Critical Inquiry'),
-		(MATHEMATICS,'Mathematical Studies'),
-		(COMPUTER_SCIENCE,'Computer/statistics/quantitative applications'),
-		(HUMANITIES,'Humanities, Arts and Design'),
-		(SOCIAL_BEHAVIORAL,'Social-Behavioral Sciences'),
-		(SCIENCE_QUALITATIVE,'Natural Science - Quantitative'),
-		(SCIENCE_GENERAL,'Natural Science - General'),
-		(CULTURAL_DIVERSITY,'Cultural Diversity in the United States'),
-		(GLOBAL_AWARENESS,'Global Awareness'),
+		(LITERACY,            'Literacy and Critical Inquiry'),
+		(MATHEMATICS,         'Mathematical Studies'),
+		(COMPUTER_SCIENCE,    'Computer/statistics/quantitative applications'),
+		(HUMANITIES,          'Humanities, Arts and Design'),
+		(SOCIAL_BEHAVIORAL,   'Social-Behavioral Sciences'),
+		(SCIENCE_QUALITATIVE, 'Natural Science - Quantitative'),
+		(SCIENCE_GENERAL,     'Natural Science - General'),
+		(CULTURAL_DIVERSITY,  'Cultural Diversity in the United States'),
+		(GLOBAL_AWARENESS,    'Global Awareness'),
 		(HISTORICAL_AWARENESS,'Historical Awareness'),
 	)
 
@@ -92,8 +92,8 @@ class Section(models.Model):
 	seats_total = models.IntegerField()
 
 class SectionMeeting(models.Model):
-	start_time = models.TimeField(db_index = True)
-	end_time = models.TimeField(db_index = True)
+	start_time = models.TimeField(db_index=True)
+	end_time = models.TimeField(db_index=True)
 	days_of_week = models.ManyToManyField(DayOfWeek)
-	location = models.CharField(max_length = 300)
-	section = models.ForeignKey(Section, null=True)
+	location = models.CharField(max_length=300)
+	section = models.ForeignKey(Section,null=True)
