@@ -41,6 +41,10 @@ class DayOfWeek(models.Model):
         (SATURDAY, 'Saturday'),
         (SUNDAY, 'Sunday')
     )
+
+    ABBREVIATIONS = tuple((abbreviation,abbreviation) for abbreviation, full_name in DAYS_OF_WEEK)
+    LIST_OF_DAYS = [MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY]
+
     day = models.CharField(max_length = 2,
                            choices = DAYS_OF_WEEK)
 
@@ -74,6 +78,9 @@ class GeneralStudies(models.Model):
         (GLOBAL_AWARENESS,    'Global Awareness'),
         (HISTORICAL_AWARENESS,'Historical Awareness'),
     )
+
+    ABBREVIATIONS = tuple((abbreviation,abbreviation) for abbreviation, full_name in GENERAL_STUDIES)
+
 
     study_type = models.CharField(max_length =2,
                                   choices = GENERAL_STUDIES)

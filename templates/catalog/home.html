@@ -1,9 +1,75 @@
 {% extends 'base.html' %}
+
 {% block content %}
-<form action="/search/" method="get">
-    <table>
-        {{ form.as_table }}
-    </table>
-    <input type="submit" value="Submit" />
-</form>
+	<div class="row">
+		<div class="col-xs-12 col-sm-4">
+		    <h2>Find your class:</h2>
+			<div class="well bs-component">
+				{% include "catalog/search_form.html" %}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-8">
+            <h2>The Alternative Course Finder</h2>
+            <p>Let's face it - ASU is a very large school. With <a href="https://asunews.asu.edu/20130822-ASU-record-students" title="Record number of students choose ASU ">
+                over 76,000 students</a>, class registration is difficult for both administrators and students. During enrollment, students are often faced with sluggish performance on ASU's own 
+                <a href="https://webapp4.asu.edu/catalog/" title="ASU Class Search">class search utility</a> and occasionally find that classes they are interested in have already been filled.
+                That's where this website comes in: roughly every 20 minutes our server clones the entire publicly available course catalog, indexes what it finds and makes it available for you to use. Because
+                we store only information you care about as a student, searches are fast and allow a level of precision not available elsewhere. Further, with so many students seats open and close for classes all
+                of the time and we're among the first to know when it happens! Our free service will notify you when seats open in any class you wish to track.
+            </p>
+            <h2>Updates</h2>
+            <ul>
+                <li>9-24-13 - All catalog updates and development efforts have ceased. Running the server out of home was 
+                  using too much bandwidth to sustain and usage statistics were poor. My eventual plan is to port this work
+                  to a client application rather than a hosted solution. It's been a good run, and I appreciate the assistance
+                  and tips provided by Facebook friends.</li>
+                <li>8-1-13 - Live again! While more effort than expected, everything is in order. Taking all this trouble
+                  ASU has given me as a sign, I've backed off even further on connection frequency, now taking upwards of
+                  a half hour per cycle. However, as I said in the FAQ, messages are sent out as soon as the data is available
+                  for the class you are interested in, so this doesn't make too much difference. I'm presently researching
+                  alternative strategies to eventually bring this time down.</li>
+                <li>7-29-13 - Not even 2 days of complete running and I've been foiled again. I'm extremely curious
+                  how they're distinguishing my requests from legitimate browsers, but I feel like there is an
+                  obvious solution: stop falsifying web-browsers. With tools like Selenium, I can generate truly
+                  indistinguishable requests. Short of indiscriminately  banning entire IP blocks, I see no mechanism
+                  for filtering my requests. If, for some reason, ASU is reading this - in case it wasn't obvious,
+                  doing so would not be wise (and it would be impossible to keep up anyways).</li>
+                <li>7-28-13 - We are back and running! A handful of email and dashboard bugs have been corrected,
+                  with more fixes to come. While still technically in "beta", it seems stable enough to be used.
+                  We will continue to improve in the coming weeks.</li>
+                <li>7-27-13 - The new cataloging system is presently being tested. There were a few unexpected
+                  difficulties, notably that Amazon's default EC2 images don't allow executing administrative
+                  commands automatically by default. We are seeing huge improvements in cataloging times though,
+                  so stay tuned. The goal is to have a fully working notification system in place for the week prior
+                  to courses starting, since this is typically the time of highest use for websites such as this.
+                  Special thanks to friends on Facebook for their suggestions and testing.</li>
+                <li>7-21-13 - As of last Friday, updates to the catalog have been temporarily ceased. ASU 
+                  decided it would be in their best interest to block my server from accessing the catalog
+                  which, while not entirely unexpected, came as a surprise. I'm about halfway through
+                  altering the catalog spider to utilize cloud servers, thus making it nearly impossible
+                  for ASU to systematically detect and block our service. We're also taking this as an
+                  opportunity to make the entire website more robust against the bugs that have been reported</li>
+                <li>7/15/13 - Back at it. Made the search form more intuitive: options are preserved for
+                  convenience, and week days no longer need to be selected. Paging is now enabled on the 
+                  results viewer, so queries larger than 100 results can be used more effectively. Empty
+                  result sets no longer present a table containing a single blank row.</li>
+                <li>7/4/13 - Enabled site-wide hiding of search bar. All pages are valid XHTML 1.0 Strict. 
+                  Catalog spidering has resumed, though there are still a few lingering bugs. </li>
+                <li>7/3/13 - Tracking in place, though untested. All links
+                  are now valid pages and design is consistent throughout the entire
+                  website. Search by day of week now fully functional.</li>
+                <li>6/30/13 - Added Registration... tracking coming soon</li>
+                <li>6/25/13 - This Just In - New Design!</li>
+            </ul>
+            <h2>Coming Soon</h2>
+            <ul>
+                <li>Email/SMS notifications should properly identify which course was found, rather than
+                  just providing a generic message.</li>
+                <li>Need to provide class level aliases, eg: Upper Division, Graduate, Lower Division, etc...</li>
+                <li>Results page should notify user of reserved seating hazards. This is tracked internally,
+                  but the details don't make it to the end-user yet.</li>
+            </ul>
+        </div>
+    </div> 
+
 {% endblock %}

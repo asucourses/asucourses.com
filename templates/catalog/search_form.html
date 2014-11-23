@@ -1,0 +1,23 @@
+<form action="/search/" method="get" id="form" class="form-horizontal">
+    <p>Search the database: use a question mark (?) as a wildcard, and leave unwanted parameters blank. <br></p>
+    <fieldset>
+        {# Include the hidden fields #}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+        {# Include the visible fields #}
+        {% for field in form.visible_fields %}
+            <div class="fieldWrapper">
+                <label>
+                    {{ field.errors }}
+                    {{ field.label }} <br />
+                    <small>
+                        {{ field.help_text|safe }}
+                    </small> <br />
+                    {{ field }}
+                </label>
+            </div>
+        {% endfor %}
+        <input type="submit" value="Submit" />
+    </fieldset>
+</form>

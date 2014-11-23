@@ -27,8 +27,8 @@
           {% for section in sections %}
             <tr>
               <td>{{ section.number }}
-              <td>{{ section.course }}</td>
-              <Td>{{ section.course.subject }}</td>
+              <td><a href="{% url 'asucourses-catalog-section_listing' section.course.subject %}">{{ section.course.subject }}</a></td>
+              <td>{{ section.course.number }}</td>
               <td>{{ section.course.title }}</td>
               <td>
                 {% if section.min_units == section.max_units %}

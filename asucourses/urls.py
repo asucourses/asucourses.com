@@ -11,13 +11,12 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^/?$', TemplateView.as_view(template_name="index.html")),
-    url(r'^home$', views.home_page),
+    url(r'^/?$', views.home_page),
     url(r'^faq$', TemplateView.as_view(template_name="faq.html")),
     url(r'^trivia$', TemplateView.as_view(template_name="trivia.html")),
     url(r'^about$', TemplateView.as_view(template_name="about.html")),
-    url(r'^subjects/$', views.subject_listing),
-    url(r'^subjects/(?P<subject>[A-Z]{3})/courses/$', views.course_listing),
-    url(r'^subjects/(?P<subject>[A-Z]{3})/sections/$', views.section_listing),
+    url(r'^subjects/$', views.subject_listing, name='asucourses-catalog-subject_listing'),
+    url(r'^subjects/(?P<subject>[A-Z]{3})/courses/$', views.course_listing, name='asucourses-catalog-course_listing'),
+    url(r'^subjects/(?P<subject>[A-Z]{3})/sections/$', views.section_listing, name='asucourses-catalog-section_listing'),
     url(r'^search/?$', views.search_results)
 )
